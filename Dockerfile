@@ -1,3 +1,4 @@
+
 FROM registry.access.redhat.com/ubi7:latest
 
 RUN yum install -y java-1.8.0-openjdk-devel
@@ -18,4 +19,4 @@ WORKDIR /build
 RUN mvn -B package && mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.1.1:go-offline
 WORKDIR /
 
-CMD [ "mvn", "-f", "/build", "exec:exec" ]
+ENTRYPOINT [ "mvn", "-f", "/build", "exec:exec" ]
